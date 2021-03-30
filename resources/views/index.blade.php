@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Ini halaman single. Slug: {{ $slug }}</h1>
+    <h1>Ini halaman artikel</h1>
 @endsection

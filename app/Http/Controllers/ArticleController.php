@@ -17,4 +17,9 @@ class ArticleController extends Controller
     {
         return view('article.single', compact('slug'));
     }
+
+    public function create()
+    {
+        return view('article.create');
+    }
 }

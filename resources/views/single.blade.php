@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ini halaman Artikel</h1>
+    <h1>Ini halaman Single</h1>
 </body>
 </html>

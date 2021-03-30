@@ -10,4 +10,9 @@ class ArticleController extends Controller
     {
         return view('extra');
     }
+
+    public function show($slug)
+    {
+        return view('single', compact('slug'));
+    }
 }

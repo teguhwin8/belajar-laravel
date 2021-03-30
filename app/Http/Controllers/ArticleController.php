@@ -59,4 +59,16 @@ class ArticleController extends Controller
 
         return redirect('/articles');
     }
+    
+    /**
+     * edit
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        return view('article.edit', compact('article'));
+    }
 }

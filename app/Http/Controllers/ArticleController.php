@@ -22,4 +22,14 @@ class ArticleController extends Controller
     {
         return view('article.create');
     }
+
+    public function store(Request $request)
+    {
+        $article = new Article;
+        $article->title = $request->title;
+        $article->subject = $request->subject;
+        $article->save();
+
+        return redirect('/articles');
+    }
 }

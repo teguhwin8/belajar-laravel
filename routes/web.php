@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/sk', function () {
-    return view('extra');
-});
+Route::get('/sk', 'ArticleController@index');

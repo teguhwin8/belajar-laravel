@@ -7,4 +7,6 @@
         <p><strong>{{ $article['title'] }}</strong></p>
         <p>{{ $article['subject'] }}</p>
     @endforeach
+
+    {{ $articles->links() }}
 @endsection

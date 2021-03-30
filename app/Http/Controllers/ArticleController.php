@@ -71,4 +71,19 @@ class ArticleController extends Controller
         $article = Article::find($id);
         return view('article.edit', compact('article'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'subject' => 'required|min:10'
+        ]);
+
+        $article = Article::find($id);
+        $article->title = $request->title;
+        $article->subject = $request->subject;
+        $article->save();
+
+        return redirect('/articles');
+    }
 }

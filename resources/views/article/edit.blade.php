@@ -2,8 +2,9 @@
 
 @section('content')
   <h1>Edit Artikel</h1>
-  <form action="/article" method="post">
+  <form action="/article/{{ $article->id }}" method="post">
     @csrf
+    @method('PUT')
     <div class="mb-3">
       <label for="title" class="form-label">Judul Artikel</label>
       <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') ? old('title') : $article->title }}">

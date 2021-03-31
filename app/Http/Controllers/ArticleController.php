@@ -58,7 +58,7 @@ class ArticleController extends Controller
             'subject' => $request->subject
         ]);
 
-        return redirect('/articles');
+        return redirect('/article');
     }
     
     /**
@@ -85,7 +85,7 @@ class ArticleController extends Controller
             'subject' => $request->subject
         ]);
 
-        return redirect('/articles');
+        return redirect('/article');
     }
     
     /**
@@ -97,6 +97,6 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         Article::find($id)->delete();
-        return redirect('/articles');
+        return redirect('/article');
     }
 }

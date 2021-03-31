@@ -52,10 +52,10 @@ class ArticleController extends Controller
             'subject' => 'required|min:10'
         ]);
 
-        $article = new Article;
-        $article->title = $request->title;
-        $article->subject = $request->subject;
-        $article->save();
+        Article::create([
+            'title' => $request->title,
+            'subject' => $request->subject
+        ]);
 
         return redirect('/articles');
     }
@@ -79,10 +79,10 @@ class ArticleController extends Controller
             'subject' => 'required|min:10'
         ]);
 
-        $article = Article::find($id);
-        $article->title = $request->title;
-        $article->subject = $request->subject;
-        $article->save();
+        Article::find($id)->update([
+            'title' => $request->title,
+            'subject' => $request->subject
+        ]);
 
         return redirect('/articles');
     }

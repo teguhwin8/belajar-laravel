@@ -24,9 +24,10 @@ class ArticleController extends Controller
      * @param  mixed $slug
      * @return void
      */
-    public function show($slug)
+    public function show($id)
     {
-        return view('article.single', compact('slug'));
+        $article = Article::find($id);
+        return view('article.single', compact('article'));
     }
     
     /**

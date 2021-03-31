@@ -8,6 +8,7 @@
 			<div class="card-body">
 				<p><strong>{{ $article->title }}</strong></p>
 				<p>{{ $article->subject }}</p>
+        <a href="/article/{{ $article->id }}" class="btn btn-sm btn-outline-primary px-4">Baca</a>
         <a href="/article/{{ $article->id }}/edit" class="btn btn-sm btn-outline-primary px-4">Edit</a>
 			</div>
     </div>

@@ -10,6 +10,11 @@
 				<p>{{ $article->subject }}</p>
         <a href="/article/{{ $article->id }}" class="btn btn-sm btn-outline-primary px-4">Baca</a>
         <a href="/article/{{ $article->id }}/edit" class="btn btn-sm btn-outline-primary px-4">Edit</a>
+        <form action="/article/{{ $article->id }}" method="POST">
+          @csrf
+          @method('delete')
+          <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+        </form>
 			</div>
     </div>
   @endforeach

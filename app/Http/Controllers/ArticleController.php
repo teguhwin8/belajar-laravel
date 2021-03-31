@@ -87,4 +87,16 @@ class ArticleController extends Controller
 
         return redirect('/articles');
     }
+    
+    /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function destroy($id)
+    {
+        Article::find($id)->delete();
+        return redirect('/articles');
+    }
 }

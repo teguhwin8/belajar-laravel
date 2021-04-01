@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Artikel')
+
 @section('content')
   <h1>Ini halaman artikel</h1>
   <a href="/article/create" class="btn btn-primary mb-3">Bikin Artikel +</a>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Tambah Artikel')
+
 @section('content')
   <h1>Buat Artikel Baru</h1>
   <form action="/article" method="post">

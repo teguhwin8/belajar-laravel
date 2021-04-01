@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {    
@@ -24,9 +25,9 @@ class ArticleController extends Controller
      * @param  mixed $slug
      * @return void
      */
-    public function show($id)
+    public function show($slug)
     {
-        $article = Article::find($id);
+        $article = Article::where('slug', $slug)->first();
         return view('article.single', compact('article'));
     }
     
@@ -55,6 +56,7 @@ class ArticleController extends Controller
 
         Article::create([
             'title' => $request->title,
+            'slug' => Str::slug($request->title, '-'),
             'subject' => $request->subject
         ]);
 

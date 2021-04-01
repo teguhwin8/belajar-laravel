@@ -10,7 +10,7 @@
           <div class="rounded shadow-sm p-3 mb-3 position-relative">
               <p><strong>{{ $article->title }}</strong></p>
               <p>{{ $article->subject }}</p>
-              <a href="/article/{{ $article->id }}" class="stretched-link"></a>
+              <a href="/article/{{ $article->slug }}" class="stretched-link"></a>
           </div>
         </div>
       @endforeach

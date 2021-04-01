@@ -28,6 +28,9 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
+        if ($article == null) {
+            abort(404);
+        }
         return view('article.single', compact('article'));
     }
     

@@ -10,3 +10,7 @@
 ### Make Models:
 
 `php artisan make:model Article`
+
+### Make Migration:
+
+`php artisan make:migration create_articles_table`

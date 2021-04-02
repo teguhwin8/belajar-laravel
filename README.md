@@ -26,3 +26,15 @@ Instalation:
 `php artisan vendor:publish --provider="Cviebrock\EloquentSluggable\ServiceProvider"`
 
 Note: `Install with the same version of laravel version`
+
+### Authentication
+
+Specifically for laravel 7:
+
+Step 1: Install laravel UI
+
+`composer require laravel/ui:^2.4`
+
+Step 2: Implement Bootstrap UI and auth
+
+`php artisan ui bootstrap --auth`

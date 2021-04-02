@@ -3,9 +3,12 @@
 @section('title', 'Artikel')
 
 @section('content')
-  <div class="min-vh-100">
-    <h1>Ini halaman artikel</h1>
-    <a href="/article/create" class="btn btn-primary mb-3">Bikin Artikel +</a>
+  <div class="container min-vh-100">
+    <h1>{{ __('Articles') }}</h1>
+    @guest
+    @else
+      <a href="/article/create" class="btn btn-primary mb-3">Bikin Artikel +</a>
+    @endguest
     @foreach ($articles->chunk(3) as $article_chunk)
       <div class="row">
         @foreach ($article_chunk as $article)

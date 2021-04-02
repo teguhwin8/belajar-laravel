@@ -10,9 +10,12 @@
       <div class="row">
         @foreach ($article_chunk as $article)
           <div class="col-md-4">
-            <div class="rounded shadow-sm p-3 mb-3 position-relative">
-              <p><strong>{{ $article->title }}</strong></p>
-              <p>{{ $article->subject }}</p>
+            <div class="position-relative">
+              <img src="images/{{ $article->thumbnail }}" alt="{{ $article->title }}" class="w-100 rounded-top">
+              <div class="rounded shadow-sm p-3 mb-3 position-relative">
+                <p><strong>{{ $article->title }}</strong></p>
+                <p>{{ $article->subject }}</p>
+              </div>
               <a href="/article/{{ $article->slug }}" class="stretched-link"></a>
             </div>
           </div>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
-{    
+{
     /**
      * index
      *
@@ -18,7 +18,7 @@ class ArticleController extends Controller
         $articles = Article::orderBy('id', 'desc')->paginate(9);
         return view('article.index', compact('articles'));
     }
-    
+
     /**
      * show
      *
@@ -33,7 +33,7 @@ class ArticleController extends Controller
         }
         return view('article.single', compact('article'));
     }
-    
+
     /**
      * create
      *
@@ -43,7 +43,7 @@ class ArticleController extends Controller
     {
         return view('article.create');
     }
-    
+
     /**
      * store
      *
@@ -53,18 +53,24 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'thumbnail' => 'required|mimes:png,jpg,jpeg|max:1024',
             'title' => 'required|min:3|max:255',
             'subject' => 'required|min:10'
         ]);
 
+        $image_name = $request->thumbnail->getClientOriginalName() . '-' . time() . '.' . $request->thumbnail->extension();
+
+        $request->thumbnail->move(public_path('images'), $image_name);
+
         Article::create([
             'title' => $request->title,
-            'subject' => $request->subject
+            'subject' => $request->subject,
+            'thumbnail' => $image_name
         ]);
 
         return redirect('/article');
     }
-    
+
     /**
      * edit
      *
@@ -91,7 +97,7 @@ class ArticleController extends Controller
 
         return redirect('/article');
     }
-    
+
     /**
      * destroy
      *

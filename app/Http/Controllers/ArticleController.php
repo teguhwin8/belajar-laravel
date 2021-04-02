@@ -86,16 +86,30 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'thumbnail' => 'mimes:png,jpg,jpeg|max:1024',
             'title' => 'required|min:3|max:255',
             'subject' => 'required|min:10'
         ]);
 
-        Article::find($id)->update([
-            'title' => $request->title,
-            'subject' => $request->subject
-        ]);
+        $article = Article::find($id);
 
-        return redirect('/article');
+        if ($request->thumbnail != null) {
+            $image_name = $request->thumbnail->getClientOriginalName() . '-' . time() . '.' . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('images'), $image_name);
+            $article->update([
+                'title' => $request->title,
+                'subject' => $request->subject,
+                'thumbnail' => $image_name
+            ]);
+        } else {
+            $article->update([
+                'title' => $request->title,
+                'subject' => $request->subject
+            ]);
+        }
+
+
+        return redirect('article' . '/' . $article->slug);
     }
 
     /**
@@ -106,7 +120,13 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        Article::find($id)->delete();
+        $article = Article::find($id);
+        $images = $article->thumbnail;
+        if ($images != null) {
+            \File::delete(public_path('images/' . $images));
+        }
+        $article->delete();
+
         return redirect('/article');
     }
 }

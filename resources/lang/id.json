@@ -1,5 +1,13 @@
 {
   "Articles": "Artikel",
+  "Name": "Nama",
   "Create New Article": "Bikin Artikel Baru",
+  "Login": "Masuk",
+  "Register": "Daftar",
+  "E-Mail Address": "Alamat Email",
+  "Password": "Kata Sandi",
+  "Confirm Password": "Ulangi Kata Sandi",
+  "Remember Me": "Ingat saya",
+  "Forgot Your Password?": "Lupa sandi?",
   "Article": "Artikel"
 }

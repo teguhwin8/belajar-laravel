@@ -38,3 +38,9 @@ Step 1: Install laravel UI
 Step 2: Implement Bootstrap UI and auth
 
 `php artisan ui bootstrap --auth`
+
+### Publish Laravel Mail and Notifications
+
+`php artisan vendor:publish --tag=laravel-mail`
+
+`php artisan vendor:publish --tag=laravel-notifications`

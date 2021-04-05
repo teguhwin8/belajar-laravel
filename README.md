@@ -44,3 +44,7 @@ Step 2: Implement Bootstrap UI and auth
 `php artisan vendor:publish --tag=laravel-mail`
 
 `php artisan vendor:publish --tag=laravel-notifications`
+
+### Make middleware
+
+`php artisan make:middleware CheckAdmin`

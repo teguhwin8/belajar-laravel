@@ -15,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ArticleController@index');
 
-Route::resource('/article', 'ArticleController');
+Auth::routes(['verify' => true]);
 
-Auth::routes();
+Route::middleware(['verified'])->group(function () {
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::resource('/article', 'ArticleController')->except([
+    'index', 'show'
+  ]);
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/article', 'ArticleController')->only([
+  'index', 'show'
+]);

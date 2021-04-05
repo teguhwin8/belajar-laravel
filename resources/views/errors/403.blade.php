@@ -24,7 +24,7 @@
     <div class="text-center">
         <img src="{{ asset('images/404-error.svg') }}" alt="" class="w-50">
       <h1>Oops...</h1>
-      <h3>Halaman yang kamu cari tidak ditemukan.</h3>
+      <h3>Kamu tidak diizinkan untuk membukan halaman ini.</h3>
       <a href="{{ url('/') }}" class="btn btn-lg btn-primary rounded rounded-pill mt-3 px-4">Kembali ke Home</a>
     </div>
   </div>

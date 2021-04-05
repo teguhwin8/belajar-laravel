@@ -24,6 +24,10 @@ Route::middleware(['verified'])->group(function () {
   ]);
 });
 
+Route::middleware(['verified', 'admin'])->group(function () {
+  Route::get('/admin', 'HomeController@admin')->name('admin');
+});
+
 Route::resource('/article', 'ArticleController')->only([
   'index', 'show'
 ]);

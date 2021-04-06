@@ -1,3 +1,3 @@
 <footer class="p-3 bg-dark text-muted">
-    <small>Copyright © 2021 <br> Sekolah Koding</small>
+    <small>Copyright © {{ now()->year }} <br>Teguh Widodo <span class="text-danger">❤</span> Sekolah Koding</small>
 </footer>

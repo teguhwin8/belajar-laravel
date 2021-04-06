@@ -13,8 +13,9 @@
             <div class="position-relative">
               <img src="images/{{ $blog->thumbnail }}" alt="{{ $blog->title }}" class="w-100 rounded-top">
               <div class="rounded shadow-sm p-3 mb-3 position-relative">
-                <p class="text-ellipsis-2"><strong>{{ $blog->title }}</strong></p>
-                <p class="text-ellipsis-3">{{ $blog->subject }}</p>
+                <p class="text-ellipsis-2 p-0 m-0"><strong>{{ $blog->title }}</strong></p>
+                <small class="text-muted">Penulis: {{ $blog->user->username }} | {{ $blog->created_at->diffForHumans() }}</small>
+                <p class="text-ellipsis-3 mt-3">{{ $blog->subject }}</p>
               </div>
               <a href="/blog/{{ $blog->slug }}" class="stretched-link"></a>
             </div>

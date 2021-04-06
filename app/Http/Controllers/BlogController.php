@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::orderBy('id', 'desc')->paginate(9);
+        $blogs = Blog::orderBy('id', 'desc')->paginate(6);
         return view('blog.index', compact('blogs'));
     }
 
@@ -47,11 +47,10 @@ class BlogController extends Controller
 
         $request->thumbnail->move(public_path('images'), $image_name);
 
-        Blog::create([
+        Auth::user()->blogs()->create([
             'title' => $request->title,
             'subject' => $request->subject,
-            'thumbnail' => $image_name,
-            'user_id' => Auth::user()->id
+            'thumbnail' => $image_name
         ]);
 
         return redirect('/blog');
@@ -81,6 +80,9 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::find($id);
+        if (Auth::user()->id != $blog->user_id) {
+            abort(403);
+        }
         return view('blog.edit', compact('blog'));
     }
 
@@ -100,6 +102,10 @@ class BlogController extends Controller
         ]);
 
         $blog = Blog::find($id);
+
+        if (Auth::user()->id != $blog->user_id) {
+            abort(403);
+        }
 
         if ($request->thumbnail != null) {
             $image_name = $request->thumbnail->getClientOriginalName() . '-' . time() . '.' . $request->thumbnail->extension();
@@ -128,6 +134,11 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $blog = Blog::find($id);
+
+        if (Auth::user()->id != $blog->user_id) {
+            abort(403);
+        }
+
         $images = $blog->thumbnail;
         if ($images != null) {
             \File::delete(public_path('images/' . $images));

@@ -9,6 +9,12 @@
   "Confirm Password": "Ulangi Kata Sandi",
   "Remember Me": "Ingat saya",
   "Forgot Your Password?": "Lupa sandi?",
+  "Verify Your Email Address": "Verifikasi Email Anda",
+  "Before proceeding, please check your email for a verification link.": "Sebelum melanjutkan, periksa email Anda untuk link verifikasi.",
+  "If you did not receive the email": "Jika Anda tidak menerima email",
+  "click here to request another": "klik di sini untuk mengirim ulang",
   "You are receiving this email because we received a password reset request for your account.": "Kamu menerima email ini karena kami menerima permintaan perubahan kata sandi di akun Anda.",
-  "Article": "Artikel"
+  "Article": "Artikel",
+  "You are logged in!": "Anda berhasil login",
+  "A fresh verification link has been sent to your email address.": "Link verifikasi baru berhasil dikirim ke alamat email Anda."
 }

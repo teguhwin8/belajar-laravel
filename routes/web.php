@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ArticleController@index');
+Route::get('/', 'BlogController@index');
 
 Auth::routes(['verify' => true]);
 
 Route::middleware(['verified'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
-  Route::resource('/article', 'ArticleController')->except([
+  Route::resource('/blog', 'BlogController')->except([
     'index', 'show'
   ]);
 });
@@ -28,6 +28,6 @@ Route::middleware(['verified', 'admin'])->group(function () {
   Route::get('/admin', 'HomeController@admin')->name('admin');
 });
 
-Route::resource('/article', 'ArticleController')->only([
+Route::resource('/blog', 'BlogController')->only([
   'index', 'show'
 ]);

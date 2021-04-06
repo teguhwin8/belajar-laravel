@@ -12,6 +12,8 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +21,7 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/main.css?v=651765533') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -42,7 +45,7 @@
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('article.index') }}">{{ __('Article') }}</a>
+							<a class="nav-link" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
 						</li>
             @guest
               <li class="nav-item">
@@ -75,7 +78,7 @@
       </div>
     </nav>
 
-    <main class="py-4">
+    <main class="pt-4">
       @yield('content')
     </main>
   </div>

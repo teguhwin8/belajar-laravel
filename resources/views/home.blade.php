@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <p>
+                        Social : {{ Auth::user()->social->username }}
+                    </p>
                 </div>
             </div>
         </div>

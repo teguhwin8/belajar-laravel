@@ -15,9 +15,11 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    <p>
-                        Social : {{ Auth::user()->social->username }}
-                    </p>
+                    <ul>
+                        @foreach ($user->socials as $social)
+                            <li>{{ $social->provider }} : {{ $social->username }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

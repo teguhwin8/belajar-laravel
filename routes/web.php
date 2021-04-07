@@ -22,6 +22,8 @@ Route::middleware(['verified'])->group(function () {
   Route::resource('/blog', 'BlogController')->except([
     'index', 'show'
   ]);
+  Route::get('/course/join/{id}', 'CourseController@join')->name('course.join');
+  Route::get('/course/unjoin/{id}', 'CourseController@unjoin')->name('course.unjoin');
 });
 
 Route::middleware(['verified', 'admin'])->group(function () {
@@ -30,4 +32,7 @@ Route::middleware(['verified', 'admin'])->group(function () {
 
 Route::resource('/blog', 'BlogController')->only([
   'index', 'show'
-]);
+  ]);
+  
+  Route::get('/course', 'CourseController@index')->name('course.index');
+  Route::get('/course/{slug}', 'CourseController@show')->name('course.show');

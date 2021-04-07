@@ -18,7 +18,7 @@ Route::get('/', 'BlogController@index');
 Auth::routes(['verify' => true]);
 
 Route::middleware(['verified'])->group(function () {
-  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/profile', 'UserController@index')->name('profile');
   Route::resource('/blog', 'BlogController')->except([
     'index', 'show'
   ]);

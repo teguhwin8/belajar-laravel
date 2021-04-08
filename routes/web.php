@@ -32,7 +32,10 @@ Route::middleware(['verified', 'admin'])->group(function () {
 
 Route::resource('/blog', 'BlogController')->only([
   'index', 'show'
-  ]);
-  
-  Route::get('/course', 'CourseController@index')->name('course.index');
-  Route::get('/course/{slug}', 'CourseController@show')->name('course.show');
+]);
+
+Route::get('/course', 'CourseController@index')->name('course.index');
+Route::get('/course/{slug}', 'CourseController@show')->name('course.show');
+
+// Nested Route
+Route::resource('blog.comments', 'CommentController')->shallow();

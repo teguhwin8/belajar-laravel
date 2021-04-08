@@ -26,14 +26,7 @@ class CourseController extends Controller
     public function join($id)
     {
         $user = Auth::user();
-        $user->courses()->attach($id);
-        return redirect('/profile');
-    }
-
-    public function unjoin($id)
-    {
-        $user = Auth::user();
-        $user->courses()->detach($id);
-        return redirect('/profile');
+        $user->courses()->toggle([$id]);
+        return redirect()->back();
     }
 }

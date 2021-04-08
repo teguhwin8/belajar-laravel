@@ -17,8 +17,11 @@
         <p class="mt-3">{{ $course->subject }}</p>
         <div class="d-flex mb-3">
           @auth
-            <a href="/course/join/{{ $course->id }}" class="btn btn-sm btn-outline-primary mr-2">Join</a>
-            <a href="/course/unjoin/{{ $course->id }}" class="btn btn-sm btn-outline-danger mr-2">Unjoin</a>
+            @if (Auth::user()->courses->contains($course->id))
+              <a href="/course/join/{{ $course->id }}" class="btn btn-sm btn-outline-danger mr-2">Unjoin</a>
+            @else
+              <a href="/course/join/{{ $course->id }}" class="btn btn-sm btn-outline-primary mr-2">Join</a>
+            @endif
           @endauth
           <a href="/course" class="btn btn-sm btn-outline-secondary mr-2">Kembali</a>
         </div>

@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col py-4">
         <h1 class="mb-0 pb-0">{{ $blog->title }}</h1>
-        <small class="text-muted">Penulis: {{ $blog->user->username }}</small>
+        <small class="text-muted">Penulis: {{ $blog->user->username }} | {{ $blog->created_at->diffForHumans() }}</small>
         <p class="mt-3">{{ $blog->subject }}</p>
         <div class="d-flex mb-3">
           @auth

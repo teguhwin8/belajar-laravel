@@ -11,6 +11,8 @@ class Blog extends Model
 
     protected $guarded = ['id'];
 
+    protected $with = ['user'];
+
     public function sluggable(): array
     {
         return [

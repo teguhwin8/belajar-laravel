@@ -32,6 +32,6 @@ class Blog extends Model
 
     public function tags()
     {
-        return $this->morphMany('App\Tag', 'tagable');
+        return $this->morphToMany('App\Tag', 'taggable');
     }
 }

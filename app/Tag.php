@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    public function tagable()
+    public $timestamp = false;
+
+    public function blogs()
     {
-        return $this->morphTo();
+        return $this->morphedByMany('App\Blog', 'taggable');
+    }
+
+    public function courses()
+    {
+        return $this->morphedByMany('App\Blog', 'taggable');
     }
 }

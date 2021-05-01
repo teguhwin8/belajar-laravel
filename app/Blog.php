@@ -29,4 +29,9 @@ class Blog extends Model
     {
         return $this->hasMany('App\BlogComment')->orderBy('id', 'desc');
     }
+
+    public function tags()
+    {
+        return $this->morphMany('App\Tag', 'tagable');
+    }
 }

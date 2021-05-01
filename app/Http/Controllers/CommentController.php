@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
+use App\BlogComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -32,9 +35,21 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'subject' => 'required|min:10'
+        ]);
+
+        $blog = Blog::find($id);
+
+        $blog->comments()->create([
+            'subject' => $request->subject,
+            'user_id' => Auth::user()->id,
+            'blog_id' => $id
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -68,7 +83,17 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'subject' => 'required|min:10'
+        ]);
+
+        $comment = BlogComment::find($id);
+
+        $comment->update([
+            'subject' => $request->subject
+        ]);
+
+        return redirect()->back();
     }
 
     /**

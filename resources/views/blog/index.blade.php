@@ -10,7 +10,7 @@
       <div class="row" data-masonry='{"percentPosition": true }'>
         @foreach ($blogs as $blog)
           <div class="col-md-4">
-            <div class="position-relative">
+            <div class="position-relative bg-white">
               <img src="images/{{ $blog->thumbnail }}" alt="{{ $blog->title }}" class="w-100 rounded-top">
               <div class="rounded shadow-sm p-3 mb-3 position-relative">
                 <p class="text-ellipsis-2 p-0 m-0"><strong>{{ $blog->title }}</strong></p>

@@ -21,7 +21,7 @@
 
     <script>
       var inputTag = document.querySelector('#tags');
-      new Tagify(inputTag, {
+      var tagify = new Tagify(inputTag, {
         whitelist: [{
             id: 1,
             value: 'HTML'
@@ -35,7 +35,14 @@
             value: 'JS'
           }
         ]
-      })
+      });
+
+      let tags = [];
+      @foreach($blog->tags as $tag)
+        tags.push("{{ $tag->title }}")
+      @endforeach
+
+      tagify.addTags(tags);
 
     </script>
   </div>

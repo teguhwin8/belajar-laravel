@@ -48,11 +48,13 @@ class BlogController extends Controller
 
         $request->thumbnail->move(public_path('images'), $image_name);
 
-        Auth::user()->blogs()->create([
+        $blog = Auth::user()->blogs()->create([
             'title' => $request->title,
             'subject' => $request->subject,
             'thumbnail' => $image_name
         ]);
+
+        $blog->tags()->sync($this->getTags($request->tags));
 
         return redirect('/blog');
     }
@@ -85,8 +87,6 @@ class BlogController extends Controller
             abort(403);
         }
 
-        
-        // dd($tags);
         return view('blog.edit', compact('blog'));
     }
 
@@ -111,14 +111,7 @@ class BlogController extends Controller
             abort(403);
         }
 
-        $tags_id = [];
-        $tagsJson = json_decode($request->tags);
-        foreach ($tagsJson as $tag) {
-            $tags = Tag::find($tag->id);
-            $tags_id[] = $tags->id;
-        }
-
-        $blog->tags()->sync($tags_id);
+        $blog->tags()->sync($this->getTags($request->tags));
 
         if ($request->thumbnail != null) {
             $image_name = $request->thumbnail->getClientOriginalName() . '-' . time() . '.' . $request->thumbnail->extension();
@@ -161,5 +154,16 @@ class BlogController extends Controller
         $blog->delete();
 
         return redirect('/blog');
+    }
+
+    private function getTags($tags)
+    {
+        $tags_id = [];
+        $tagsJson = json_decode($tags);
+        foreach ($tagsJson as $tag) {
+            $tags = Tag::find($tag->id);
+            $tags_id[] = $tags->id;
+        }
+        return $tags_id;
     }
 }

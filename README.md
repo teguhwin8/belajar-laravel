@@ -48,3 +48,9 @@ Step 2: Implement Bootstrap UI and auth
 ### Make middleware
 
 `php artisan make:middleware CheckAdmin`
+
+### Tagify
+
+`Cari di google dah`
+
+# Alhamdulillah Finish

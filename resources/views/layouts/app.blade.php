@@ -22,6 +22,10 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/main.css?v=651765533') }}" rel="stylesheet">
+
+  {{-- Tagify --}}
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.1.1/dist/tagify.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@4.1.1/dist/tagify.css">
 </head>
 
 <body>

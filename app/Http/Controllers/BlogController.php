@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,6 +84,9 @@ class BlogController extends Controller
         if (Auth::user()->id != $blog->user_id) {
             abort(403);
         }
+
+        
+        // dd($tags);
         return view('blog.edit', compact('blog'));
     }
 
@@ -107,6 +111,15 @@ class BlogController extends Controller
             abort(403);
         }
 
+        $tags_id = [];
+        $tagsJson = json_decode($request->tags);
+        foreach ($tagsJson as $tag) {
+            $tags = Tag::find($tag->id);
+            $tags_id[] = $tags->id;
+        }
+
+        $blog->tags()->sync($tags_id);
+
         if ($request->thumbnail != null) {
             $image_name = $request->thumbnail->getClientOriginalName() . '-' . time() . '.' . $request->thumbnail->extension();
             $request->thumbnail->move(public_path('images'), $image_name);
@@ -121,6 +134,8 @@ class BlogController extends Controller
                 'subject' => $request->subject
             ]);
         }
+
+        
 
         return redirect('blog' . '/' . $blog->slug);
     }
